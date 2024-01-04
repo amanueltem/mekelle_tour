@@ -6,7 +6,7 @@ const HomePage=()=>{
             <Link to="/book-now"><button>Book Now</button></Link>
             <Link to="/buy-tour-package"><button>Buy Tour Package</button></Link>
             <Link to="/places"><button>Places</button></Link>
-            <Link to="/map"><button>offiline map</button></Link>
+            <Link to="/map"><button>map</button></Link>
         </nav>
     </div>
     )
