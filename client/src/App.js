@@ -15,9 +15,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn How to develop Mekelle tour agency online system. This from Aman
-          and Gech.
+          Learn How to develop Mekelle tour agency online system.
         </a>
+        <div>Hello Aman am Gech and am going to modify the code.</div>
       </header>
     </div>
   );
