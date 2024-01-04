@@ -17,7 +17,7 @@ function App() {
         >
           Learn How to develop Mekelle tour agency online system.
         </a>
-        <div>Hello Aman am Gech and am going to modify the code.</div>
+        <div>Hello Aman accm Gech and am going to modify the code.</div>
       </header>
     </div>
   );
