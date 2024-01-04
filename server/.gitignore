@@ -4,8 +4,6 @@ yarn-error.log*
 *.log
 .env
 dist/
-package-lock.json
-yarn.lock
 .vscode/
 .idea/
 .DS_Store
