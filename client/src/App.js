@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -15,7 +15,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn How to develop Mekelle tour agency online system.
+          Learn How to develop Mekelle tour agency online system. This from Aman
+          and Gech.
         </a>
       </header>
     </div>
