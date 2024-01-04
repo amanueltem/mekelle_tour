@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes,Route } from 'react-router-dom';
+import BookNow from './components/BookNow';
+import BuyTourPackage from './components/BuyTourPackage';
+import Places from './components/Places';
+import Map from './components/Map';
+import HomePage from './components/HomePage'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn How to develop Mekelle tour agency online system.
-        </a>
-      </header>
+     <BrowserRouter>
+     <Routes>
+         <Route path="/" element={<HomePage/>}/>
+         <Route path="/book-now" element={<BookNow/>} />
+        <Route path="/buy-tour-package" element={<BuyTourPackage/>} />
+        <Route path="/places" element={<Places/>} />
+        <Route path="/map" element={<Map/>} />
+     </Routes>
+     </BrowserRouter>
     </div>
   );
 }
