@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn How to develop Mekelle tour agency online system.
         </a>
       </header>
     </div>
