@@ -11,3 +11,4 @@ Thumbs.db
 coverage/
 .eslintrc
 config/database.js
+*.json
