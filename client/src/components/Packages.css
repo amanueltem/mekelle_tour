@@ -1,0 +1,20 @@
+.tour-packages{
+    background-color:cadetblue;
+}
+img{
+    height: 250px;
+    width:250px;
+}
+.buy-button{
+    font-size:1em;
+    background-color: green;
+}
+.pacage-container{
+    margin-left: 5%;
+    margin-right:5%;
+    display: flex;
+    gap:10px;
+}
+.package-page{
+    margin:0% 5% 5% 5%;
+}
