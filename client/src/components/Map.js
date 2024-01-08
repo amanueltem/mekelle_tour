@@ -8,7 +8,9 @@ const  Map = () => {
   const [places, setPlaces] = useState([]);
   const [center, setCenter] = useState([13.497402, 39.470737]);
    const [selectedPlace, setSelectedPlace] = useState(0);
-const[type,setType]=useState(["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'])
+   const [selectedType,setSelectedType]=useState(1);
+const[type,setType]=useState([ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'])
   useEffect(() => {
     const fetchAllPlaces = async () => {
       try {
@@ -47,28 +49,24 @@ const[type,setType]=useState(["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 
 const handleType = (event) => {
   const selectedValue = event.target.value;
-
-  switch (selectedValue) {
-    case "basic":
+  setSelectedType(selectedValue)
+  console.log("================================"+selectedValue);
+   console.log("*****************"+selectedType);
+  if(selectedValue==1){
+     console.log("***************map");
       setType([
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       ]);
-      console.log("***************map");
-      break;
-
-    case "satellite":
+}
+else{
+console.log("************sattelite")
       setType([
         "https://api.maptiler.com/maps/satellite/256/{z}/{x}/{y}.jpg?key=yDEkISZLLKud81ZQCaYT",
         "https://api.maptiler.com/maps/satellite/256/tiles.json?key=yDEkISZLLKud81ZQCaYT"
       ]);
-      console.log("************sattelite")
-      break;
-
-    default:
-      // Handle default case if needed
-  }
-};
+      }
+  };
 
 
   const SelectPlace = () => (
@@ -86,10 +84,10 @@ const handleType = (event) => {
 
  const SelectType = () => (
   <div className="select-type">
-    <select onChange={handleType}>
+    <select value={selectedType} onChange={handleType}>
       <option value="" disabled>Select map Type</option>
-      <option key="basic" value="basic">Basic map</option>
-      <option key="satellite" value="satellite">Satellite map</option>
+      <option key="1" value={1}>Basic map</option>
+      <option key="2" value={2}>Satellite map</option>
     </select>
   </div>
 );
