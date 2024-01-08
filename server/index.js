@@ -1,6 +1,7 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
+import getPlaces from "./components/places";
 const app = express();
 const db = mysql.createConnection({
   host: "localhost",
@@ -14,13 +15,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.json("Hello this is backend!");
 });
-app.get("/map", (req, res) => {
-  const q = "SELECT * FROM places";
-  db.query(q, (err, data) => {
-    if (err) return res.json(err);
-    else return res.json(data);
-  });
-});
+app.get("/map", getPlaces);
 app.listen(5000, () => {
   console.log("Connected to backend at port 5000 okey!");
 });
