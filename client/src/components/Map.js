@@ -37,33 +37,25 @@ const[type,setType]=useState([ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.p
   }, []); 
 
   const handlePlaceChange = (event) => {
-    const selectedPlaceId = event.target.value; // Use event.target.value
-    setSelectedPlace(selectedPlaceId);
-    
-    // Find the selected place based on place_id
-    const selectedPlaceObj = places.find((place) => place.place_id === parseInt(selectedPlaceId, 10));
-
+    const selectedPlaceIndex = parseInt(event.target.value); // Use event.target.value
+    setSelectedPlace(selectedPlaceIndex);
     // Set the center based on the selected place
-    setCenter([selectedPlaceObj.latitude, selectedPlaceObj.longitude]);
+    setCenter([places[selectedPlaceIndex].latitude,places[selectedPlaceIndex].longitude]);
   };
 
 const handleType = (event) => {
-  const selectedValue = event.target.value;
+  const selectedValue = parseInt(event.target.value);
   setSelectedType(selectedValue)
-  console.log("================================"+selectedValue);
-   console.log("*****************"+selectedType);
-  if(selectedValue==1){
-     console.log("***************map");
+  if(selectedValue===1){
       setType([
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       ]);
 }
 else{
-console.log("************sattelite")
       setType([
-        "https://api.maptiler.com/maps/satellite/256/{z}/{x}/{y}.jpg?key=yDEkISZLLKud81ZQCaYT",
-        "https://api.maptiler.com/maps/satellite/256/tiles.json?key=yDEkISZLLKud81ZQCaYT"
+        "https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=yDEkISZLLKud81ZQCaYT",
+        "https://api.maptiler.com/maps/satellite/tiles.json?key=yDEkISZLLKud81ZQCaYT"
       ]);
       }
   };
@@ -74,7 +66,7 @@ console.log("************sattelite")
       <select className="select-element" value={selectedPlace} onChange={handlePlaceChange}>
        <option value="" disabled>Select a place</option>
         {places.map((place, index) => (
-          <option key={index} value={place.place_id}>
+          <option key={index} value={index}>
             {place.name}
           </option>
         ))}
