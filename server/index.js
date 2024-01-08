@@ -1,13 +1,21 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
-import getPlaces from "./components/places";
+import getPlaces from "./components/places.js";
 const app = express();
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "ne200ths",
-  database: "mekelle_tour",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "ne200ths",
+  database: process.env.DB_DATABASE || "mekelle_tour",
+});
+app.locals.db = db;//store db  in locals
+db.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL:", err);
+    process.exit(1); // Exit the process if there's a database connection error
+  }
+  console.log("Connected to MySQL!");
 });
 app.use(express.json());
 app.use(cors());
@@ -15,7 +23,19 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.json("Hello this is backend!");
 });
-app.get("/map", getPlaces);
+app.get("/map", (req, res) => getPlaces(req, res));
 app.listen(5000, () => {
   console.log("Connected to backend at port 5000 okey!");
+});
+
+// Gracefully close the database connection when the server is shutting down
+process.on("SIGINT", () => {
+  console.log("Closing database connection...");
+  db.end((err) => {
+    if (err) {
+      console.error("Error closing MySQL connection:", err);
+    }
+    console.log("MySQL connection closed.");
+    process.exit(0);
+  });
 });
