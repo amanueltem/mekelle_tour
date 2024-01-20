@@ -1,5 +1,6 @@
 import axios from "axios"
 import {useState,useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function BookNow(){
 
@@ -83,8 +84,12 @@ export default function BookNow(){
                 <input type="number"  placeholder="Enter number of days"/>
                 </td>
                 </tr>
+                <tr>
+                  <td><h3>Number of people:</h3></td>
+                  <td><input type="number" placeholder="Enter number of peoples"/></td>
+                </tr>
                 </table>
-                <button type="submit" className='btn btn-success'>Book Now</button>
+                <Link to="/login"><button type="submit" className='btn btn-success'>Book Now</button></Link>
             </form>
         </div>
     )
