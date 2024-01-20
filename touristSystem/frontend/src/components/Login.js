@@ -1,22 +1,54 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLocation,useNavigate } from 'react-router-dom';  // Import useNavigate instead of useHistory
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
+  /**************Data from the other page"*/
+
+console.log("****************************************/")
+      const location = useLocation();
+  const navigate = useNavigate();
+const searchParams = new URLSearchParams(location.search);
+const destination = searchParams.get('destination');
+const date = searchParams.get('date');
+const transportation = searchParams.get('transportation');
+const duration = searchParams.get('duration');
+const number=searchParams.get('number')
+const page=searchParams.get('page')
+console.log(destination)
+console.log(date)
+console.log(transportation)
+console.log(duration)
+console.log(number)
+console.log(page)
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
+      setLoading(true);
+    
+
       const response = await axios.post('http://localhost:5000/login', { email, password });
       console.log(response.data);
-
-      // Clear the input fields after successful login
-      setEmail('');
-      setPassword('');
+       if (page === "BookNow") {
+  // Navigate to '/payforbook' with additional parameters
+  navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+} else {
+  // Navigate to '/payforpackage' with additional parameters
+  navigate(`/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+}
     } catch (error) {
       console.error('Login failed', error);
+      setError('Invalid email or password');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,8 +76,16 @@ const Login = () => {
               onChange={e => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className='btn btn-success'>Login</button>
+          <button type="submit" className='btn btn-success' disabled={loading}>
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
         </form>
+
+        {error && (
+          <div className="alert alert-danger mt-3" role="alert">
+            {error}
+          </div>
+        )}
 
         <div className="mt-3">
           <p>Don't have an account? <a href="/register">Create Account</a></p>
@@ -56,5 +96,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

@@ -6,6 +6,8 @@ import Map from './components/map/Map';
 import HomePage from './components/HomePage'
 import Login from './components/Login'
 import Register from './components/Register'
+import PayforBook from './components/payment/PayforBook'
+import PayforPackage from './components/payment/PayforPackage'
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,8 @@ function App() {
         <Route path="/map" element={<Map/>} />
         <Route path="/login" element={<Login/>}/> 
         <Route path="/register" element={<Register/>}/>
+        <Route path="/payforbook" element={<PayforBook/>}/>
+        <Route path="/payforpackage" element={<PayforPackage/>}/>
      </Routes>
      </BrowserRouter>
     </div>

@@ -1,7 +1,13 @@
+import Axum from "./Axum"
+import Alamata from "./Almata"
+import Gheralta from "./Gheralta.js"
+import "./places.css"
 export default function Places(){
     return(
-        <div>
-            <h1>Here it continues to see places.</h1>
+        <div className="card-container">
+            <Axum/>
+            <Alamata/>
+            <Gheralta/>>
         </div>
     )
 }

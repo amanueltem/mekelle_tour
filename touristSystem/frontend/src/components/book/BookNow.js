@@ -1,17 +1,19 @@
 import axios from "axios"
-import {useState,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-export default function BookNow(){
+export default function BookNow() {
 
- const [places, setPlaces] = useState([]);
- const [selectedPlace, setSelectedPlace] = useState(0);
-// const [destination,setDestination]=useState('');
- const[date,setDate]=useState('')
- const[transportation,setTransPortation]=useState('')
- const[duration,setDuration]=useState(0);
- 
-   
+  const [places, setPlaces] = useState([]);
+  const [selectedPlace, setSelectedPlace] = useState(1);
+  // const [destination,setDestination]=useState('');
+  const [date, setDate] = useState('')
+  const [transportation, setTransportation] = useState('')
+  const [duration, setDuration] = useState(0);
+  const [number,setNumber]=useState(1)
+  const page="BookNow"
+
+
   useEffect(() => {
     const fetchAllPlaces = async () => {
       try {
@@ -28,69 +30,81 @@ export default function BookNow(){
   }, []); // Empty dependency array means this effect runs once on mount
 
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const destination=places[selectedPlace].name;
-    const bookDetails = {
-       destination,
-       date,
-       transportation,
-       duration,
-      };
-      console.log(bookDetails)
-    }
+  }
 
- const handlePlaceChange = (event) => {
+  const handlePlaceChange = (event) => {
     const selectedPlaceIndex = parseInt(event.target.value); // Use event.target.value
     setSelectedPlace(selectedPlaceIndex);
   };
 
- const SelectPlace = () => (
+  const SelectPlace = () => (
     <div>
       <select className="select-element" value={selectedPlace} onChange={handlePlaceChange}>
-       <option value="" disabled>Select a place</option>
+        <option value="" disabled>Select a place</option>
         {places.map((place, index) => (
-          <option key={index} value={index}>
+          <option key={index} value={place.place_id}>
             {place.name}
           </option>
         ))}
       </select>
     </div>
   );
-    return(
-        <div className=' justify-content-center align-items-center  vh-100'>
-            <form className='p-3 bg-white w-25' onSubmit={handleSubmit}>
-                <table>
-                <tr>
-                <td><h3>Destination</h3></td>
-                <td><SelectPlace/></td>
-                </tr>
-                <tr>
-                <td><h3>Date:</h3></td>
-                <td><input type="date" value={date} onChange={e=>setDate(e.target.value)}/></td>
-                </tr>
-                <tr columnSpan="3">
-                <td><h3>Transportation:</h3></td>
-                <td >
-                <h5>Bus <input type="radio" name="transport" value="b"  />   
-                Flight <input type="radio" name="transport" value="f" /></h5>
-                </td>
-                </tr>
-                <tr>
-                <td>
-                <h3>Duration:</h3>
-                </td>
-                <td>
-                <input type="number"  placeholder="Enter number of days"/>
-                </td>
-                </tr>
-                <tr>
-                  <td><h3>Number of people:</h3></td>
-                  <td><input type="number" placeholder="Enter number of peoples"/></td>
-                </tr>
-                </table>
-                <Link to="/login"><button type="submit" className='btn btn-success'>Book Now</button></Link>
-            </form>
-        </div>
-    )
+  return (
+    <div className=' justify-content-center align-items-center  vh-100'>
+      <form className='p-3 bg-white w-25' onSubmit={handleSubmit}>
+        <table>
+          <tr>
+            <td><h3>Destination</h3></td>
+            <td><SelectPlace /></td>
+          </tr>
+          <tr>
+            <td><h3>Date:</h3></td>
+            <td><input type="date" value={date} onChange={e => setDate(e.target.value)} /></td>
+          </tr>
+          <tr columnSpan="3">
+            <td>
+  <h3>Transportation:</h3>
+</td>
+<td>
+  <h5>
+    Bus <input
+      type="radio"
+      name="transport"
+      value="bus"
+      checked={transportation === 'bus'}
+      onChange={(e) => setTransportation(e.target.value)}
+    />
+    Flight <input
+      type="radio"
+      name="transport"
+      value="flight"
+      checked={transportation === 'flight'}
+      onChange={(e) => setTransportation(e.target.value)}
+    />
+  </h5>
+</td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Duration:</h3>
+            </td>
+            <td>
+              <input type="number" placeholder="Enter number of days"  onChange={e=>setDuration(e.target.value)}/>
+            </td>
+          </tr>
+          <tr>
+            <td><h3>Number of people:</h3></td>
+            <td><input type="number" placeholder="Enter number of peoples"  onChange={e=>setNumber(e.target.value)}/></td>
+          </tr>
+        </table>
+        <Link to={`/login?destination=${selectedPlace}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`}>
+  <button type="submit" className='btn btn-success'>Book Now</button>
+</Link>
+
+
+      </form>
+    </div>
+  )
 }

@@ -1,0 +1,21 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.card {
+  flex: 1;
+  height: 100%; /* Set the height to 100% */
+  /* Add other styling for your cards */
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
