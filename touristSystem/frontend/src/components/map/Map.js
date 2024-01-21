@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Map = () => {
   const [places, setPlaces] = useState([]);
-  const [center, setCenter] = useState([13.497402, 39.470737]);
+  const [center, setCenter] = useState([12.4148, 39.5582]);
   const [selectedPlace, setSelectedPlace] = useState(0);
   const [selectedType, setSelectedType] = useState(1);
   const [type, setType] = useState([

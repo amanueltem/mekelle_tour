@@ -39,6 +39,15 @@ const Login = () => {
         password,
       });
       console.log(response.data);
+      if(response.data=="sucess"){
+       if (page === "BookNow") {
+  // Navigate to '/payforbook' with additional parameters
+  navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+} else {
+  // Navigate to '/payforpackage' with additional parameters
+  navigate(`/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+  }
+}
       if (response.data == "sucess") {
         if (page === "BookNow") {
           // Navigate to '/payforbook' with additional parameters

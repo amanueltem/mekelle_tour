@@ -13,6 +13,7 @@ img{
     margin-left: 5%;
     margin-right:5%;
     display: flex;
+    flex-wrap:wrap;
     gap:10px;
 }
 .package-page{

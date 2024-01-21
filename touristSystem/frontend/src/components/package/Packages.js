@@ -29,7 +29,7 @@ const Packages = (props) => {
 
   return (
     <div className='tour-packages'>
-      <h3>Package Name: {props.package_name}</h3>
+      <h3>Package Name: {props.package_id}</h3>
       <h3>Destination: {props.package_destination}</h3>
       <h3>
         {packageImage && <img src={packageImage} alt="tour package" />}
