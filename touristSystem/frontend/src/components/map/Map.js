@@ -6,7 +6,7 @@ import './style.css';
 
 const  Map = () => {
   const [places, setPlaces] = useState([]);
-  const [center, setCenter] = useState([13.497402, 39.470737]);
+  const [center, setCenter] = useState([14.1239, 38.7245]);
    const [selectedPlace, setSelectedPlace] = useState(0);
    const [selectedType,setSelectedType]=useState(1);
 const[type,setType]=useState([ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

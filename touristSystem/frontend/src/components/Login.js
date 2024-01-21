@@ -37,12 +37,14 @@ console.log(page)
 
       const response = await axios.post('http://localhost:5000/login', { email, password });
       console.log(response.data);
+      if(response.data=="sucess"){
        if (page === "BookNow") {
   // Navigate to '/payforbook' with additional parameters
   navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
 } else {
   // Navigate to '/payforpackage' with additional parameters
   navigate(`/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+  }
 }
     } catch (error) {
       console.error('Login failed', error);
