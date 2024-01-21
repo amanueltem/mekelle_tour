@@ -77,6 +77,33 @@ export default function AddPackage() {
     const selectedPlaceIndex = parseInt(event.target.value); // Use event.target.value
     setSelectedPlace(selectedPlaceIndex);
   };
+  
+
+  const handleImageChange = async (e) => {
+    const selectedImage = e.target.files[0];
+
+    // Create FormData object
+    const formData = new FormData();
+    formData.append('image', selectedImage);
+
+    try {
+      // Upload image to the server
+      const response = await axios.post('http://localhost:8800/upload', formData);
+
+      // Assuming the server responds with the image location
+      const imageLocation = response.data.imageLocation;
+
+      // Update state with the image location or perform further actions
+      setImage(imageLocation);
+
+      // Log the image location
+      console.log('Image Location:', imageLocation);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
+
 
   const SelectPlace = () => (
     <div>
@@ -106,7 +133,7 @@ export default function AddPackage() {
           </tr>
           <tr>
             <td><h3>Image:</h3></td>
-            <td><input type="file" value={image} onChange={e => setImage(e.target.value)} /></td>
+            <td><input type="file" onChange={handleImageChange} /></td>
           </tr>
           
           <tr>
@@ -153,13 +180,12 @@ export default function AddPackage() {
             <td>
             <textArea rows="3" cols="40" placeholder="Description for tour package"     
              value={description} 
-              onChange={(e)=>{setDescription(e.target.value); console.log(description)}} >
+              onChange={(e)=>{setDescription(e.target.value)}} >
               </textArea>
               </td>
           </tr>
         </table>
   <button type="submit" className='btn btn-success'>Add Tour Package</button>
-
 
       </form>
     </div>

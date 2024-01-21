@@ -1,6 +1,8 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
+import path from 'path'
+import multer from 'multer'
 import getPlaces from "./components/places.js";
 import getPackages from "./components/packages.js";
 import getAccounts from "./components/Account.js";
@@ -27,6 +29,38 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.json("Hello this is backend!");
 });
+
+
+
+
+
+
+// Set up Multer to handle file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Destination folder for uploaded files
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const fileExtension = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + uniqueSuffix + fileExtension);
+  },
+});
+
+const upload = multer({ storage });
+
+// Handle image upload
+app.post('/upload', upload.single('image'), (req, res) => {
+  const imageLocation = req.file.path; // This is the path where the image is stored
+  res.json({ imageLocation });
+});
+
+
+
+
+
+
+
 app.get("/map", (req, res) => getPlaces(req, res));
 app.get("/tour_package", (req, res) => getPackages(req, res));
 app.post("/login",(req,res)=>getAccounts(req,res));
