@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 export default function BookNow() {
   const [places, setPlaces] = useState([]);
@@ -70,24 +70,24 @@ export default function BookNow() {
   return (
     <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <nav>
-        <Link to="/">
+        <NavLink exact to="/" activeClassName="active">
           <button>Home</button>
-        </Link>
-        <Link to="/places">
+        </NavLink>
+        <NavLink to="/places" activeClassName="active">
           <button>Places</button>
-        </Link>
-        <Link to="/map">
-          <button>map</button>
-        </Link>
-        <Link to="/buy-tour-package">
+        </NavLink>
+        <NavLink to="/map" activeClassName="active">
+          <button>Map</button>
+        </NavLink>
+        <NavLink to="/buy-tour-package" activeClassName="active">
           <button>Buy Tour Package</button>
-        </Link>
-        <Link to="/book-now">
+        </NavLink>
+        <NavLink to="/book-now" activeClassName="active">
           <button>Book Now</button>
-        </Link>
-        <Link to="/Contact">
+        </NavLink>
+        <NavLink to="/contact" activeClassName="active">
           <button>Contact us</button>
-        </Link>
+        </NavLink>
       </nav>
       <div className=" justify-content-center align-items-center  vh-100">
         <form className="p-3 bg-white w-25" onSubmit={handleSubmit}>

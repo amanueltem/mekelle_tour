@@ -3,6 +3,9 @@ import "./SlideShow.css";
 import url1 from "./ShowPhoto/url1.jpg";
 import url2 from "./ShowPhoto/url2.jpg";
 import url3 from "./ShowPhoto/url3.jpg";
+import url4 from "./ShowPhoto/Mary_Zion.jpg";
+import url5 from "./ShowPhoto/debre_Damo.jpg";
+import url6 from "./ShowPhoto/negash.jpg";
 
 const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,6 +37,9 @@ const SideShow = () => {
     url1,
     url2,
     url3,
+    url4,
+    url5,
+    url6,
     // Add more image URLs as needed
   ];
 

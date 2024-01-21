@@ -2,7 +2,7 @@ import React from "react";
 import "./HomePage.css";
 import video from "./ShowPhoto/video.mp4";
 //import video from "../../Assets/video.mp4";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SideShow from "./SideShow.js";
 const HomePage = () => {
   return (
@@ -10,26 +10,33 @@ const HomePage = () => {
       <video src={video} muted autoPlay loop type="video/mp4"></video>
 
       <nav>
-        <Link to="/places">
+        <NavLink exact to="/" activeClassName="active">
+          <button>Home</button>
+        </NavLink>
+        <NavLink to="/places" activeClassName="active">
           <button>Places</button>
-        </Link>
-        <Link to="/map">
-          <button>map</button>
-        </Link>
-        <Link to="/buy-tour-package">
+        </NavLink>
+        <NavLink to="/map" activeClassName="active">
+          <button>Map</button>
+        </NavLink>
+        <NavLink to="/buy-tour-package" activeClassName="active">
           <button>Buy Tour Package</button>
-        </Link>
-        <Link to="/book-now">
+        </NavLink>
+        <NavLink to="/book-now" activeClassName="active">
           <button>Book Now</button>
-        </Link>
-        <Link to="/Contact">
+        </NavLink>
+        <NavLink to="/contact" activeClassName="active">
           <button>Contact us</button>
-        </Link>
+        </NavLink>
       </nav>
-      <SideShow />
-      <div className="h2">
-        <h2>Search your destination and enjoy with us !</h2>
-        <h2>We Can Assist You As Mekelle Tour Agency System!</h2>
+      <div className="mu">
+        <SideShow />
+        <div className="text">
+          <p>
+            Search your destination and enjoy with us ! We Can Assist You As
+            Mekelle Tour Agency System!
+          </p>
+        </div>
       </div>
     </div>
   );
