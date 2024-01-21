@@ -1,18 +1,21 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link,useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import './Book.css'
 export default function BookNow() {
   const [places, setPlaces] = useState([]);
-  const [selectedPlace, setSelectedPlace] = useState(1);
+  const [selectedPlace, setSelectedPlace] = useState(0);
   // const [destination,setDestination]=useState('');
   const [date, setDate] = useState("");
   const [transportation, setTransportation] = useState("");
   const [duration, setDuration] = useState(0);
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(0);
   const [validationFailed, setValidationFailed] = useState(false);
   const [fieldsEmpty, setFieldsEmpty] = useState(false);
   const page = "BookNow";
+  
+  const navigate=useNavigate();
 
   useEffect(() => {
     const fetchAllPlaces = async () => {
@@ -31,8 +34,10 @@ export default function BookNow() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedPlace || !date || !transportation || !duration || !number) {
+    if ( !date || !transportation || !duration || !number) {
       alert("Please fill in all required fields.");
+      setFieldsEmpty(true);
+      return;
     }
     console.log("Booking submitted:", {
       selectedPlace,
@@ -42,6 +47,7 @@ export default function BookNow() {
       number,
       page,
     });
+    navigate(`/login?destination=${places[selectedPlace].name}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`);
   };
 
   const handlePlaceChange = (event) => {
@@ -91,6 +97,7 @@ export default function BookNow() {
       </nav>
       <div className=" justify-content-center align-items-center  vh-100">
         <form className="p-3 bg-white w-25" onSubmit={handleSubmit}>
+        <div>
           <table>
             <tr>
               <td>
@@ -108,7 +115,7 @@ export default function BookNow() {
                 <input
                   type="date"
                   value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  onChange={(e) => setDate(e.target.value)} className={`mb-3 ${fieldsEmpty &&!date ? 'has-error' : ''}`}
                 />
               </td>
             </tr>
@@ -124,7 +131,7 @@ export default function BookNow() {
                     name="transport"
                     value="bus"
                     checked={transportation === "bus"}
-                    onChange={(e) => setTransportation(e.target.value)}
+                    onChange={(e) => setTransportation(e.target.value)} 
                   />
                   Flight{" "}
                   <input
@@ -145,7 +152,7 @@ export default function BookNow() {
                 <input
                   type="number"
                   placeholder="Enter number of days"
-                  onChange={(e) => setDuration(e.target.value)}
+                  onChange={(e) => setDuration(e.target.value)} className={`mb-3 ${fieldsEmpty &&!duration ? 'has-error' : ''}`}
                 />
               </td>
             </tr>
@@ -157,18 +164,15 @@ export default function BookNow() {
                 <input
                   type="number"
                   placeholder="Enter number of peoples"
-                  onChange={(e) => setNumber(e.target.value)}
+                  onChange={(e) => setNumber(e.target.value)} className={`mb-3 ${fieldsEmpty &&!number ? 'has-error' : ''}`}
                 />
               </td>
             </tr>
           </table>
-          <Link
-            to={`/login?destination=${selectedPlace}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`}
-          >
             <button type="submit" className="btn btn-success">
               Book Now
             </button>
-          </Link>
+            </div>
         </form>
       </div>
     </div>

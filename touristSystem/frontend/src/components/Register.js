@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -7,7 +8,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [fieldsEmpty, setFieldsEmpty] = useState(false);
-
+   
   const handleSubmit = async (e) => {
     e.preventDefault();
 

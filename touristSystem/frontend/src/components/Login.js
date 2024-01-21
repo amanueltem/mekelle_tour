@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./SlideShow.css"
 import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import React, { useState } from "react";
 import axios from "axios";
@@ -16,21 +17,26 @@ const Login = () => {
   const duration = searchParams.get("duration");
   const number = searchParams.get("number");
   const page = searchParams.get("page");
-  console.log(destination);
+  /*console.log(destination);
   console.log(date);
   console.log(transportation);
   console.log(duration);
   console.log(number);
-  console.log(page);
+  console.log(page);*/
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fieldsEmpty, setFieldsEmpty] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+     if ( !email || !password) {
+      alert("Please fill in all required fields.");
+      setFieldsEmpty(true);
+      return;
+    }
     try {
       setLoading(true);
 
@@ -48,20 +54,8 @@ const Login = () => {
   navigate(`/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
   }
 }
-      if (response.data == "sucess") {
-        if (page === "BookNow") {
-          // Navigate to '/payforbook' with additional parameters
-          navigate(
-            `/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`
-          );
-        } else {
-          // Navigate to '/payforpackage' with additional parameters
-          navigate(
-            `/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`
-          );
-        }
-      }
     } catch (error) {
+    console.log(error);
       console.error("Login failed", error);
       setError("Invalid email or password");
     } finally {
@@ -71,7 +65,7 @@ const Login = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="p-3 bg-white w-25">
+      <div className="p-3 bg-white w-30">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">Email</label>
@@ -80,7 +74,7 @@ const Login = () => {
               placeholder="Enter Email"
               className="form-control"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}  
             />
           </div>
           <div className="mb-3">

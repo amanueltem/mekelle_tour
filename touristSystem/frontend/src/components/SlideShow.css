@@ -16,3 +16,7 @@ h1 {
 .mu {
   display: flex;
 }
+.has-error {
+  border: 1px solid red;
+}
+
