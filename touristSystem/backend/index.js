@@ -9,7 +9,7 @@ const app = express();
 const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "ne200ths",
+  password: process.env.DB_PASSWORD || "",
   database: process.env.DB_DATABASE || "mekelle_tour",
 });
 app.locals.db = db; //store db  in locals

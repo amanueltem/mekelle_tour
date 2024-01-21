@@ -47,7 +47,7 @@ const BuyTourPackage = () => {
         <h1>Available Tour Packages</h1>
         <div className="pacage-container">
           {packages.map((each_tour, index) => (
-            <Packages key={index} {...each_tour}></Packages>
+            <Packages className="card" key={index} {...each_tour}></Packages>
           ))}
         </div>
       </div>
