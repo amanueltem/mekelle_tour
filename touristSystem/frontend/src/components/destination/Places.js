@@ -8,7 +8,7 @@ import Negash from "./Negash.js";
 import { Link } from "react-router-dom";
 export default function Places() {
   return (
-    <div>
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <nav>
         <Link to="/">
           <button>Home</button>

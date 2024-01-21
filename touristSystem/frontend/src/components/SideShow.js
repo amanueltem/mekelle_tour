@@ -40,7 +40,6 @@ const SideShow = () => {
   return (
     <div>
       <Slideshow images={imageUrls} />
-      <h1>Search your destination and enjoy with us !</h1>
     </div>
   );
 };

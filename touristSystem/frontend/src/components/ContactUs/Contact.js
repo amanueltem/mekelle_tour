@@ -8,7 +8,7 @@ const Contact = () => {
   const phoneNumber = "+251900000001"; // Replace with your actual phone number
   const emailAddress = "MekTour@gmail.com";
   return (
-    <div>
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <nav>
         <Link to="/">
           <button>Home</button>

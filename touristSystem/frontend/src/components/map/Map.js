@@ -101,7 +101,7 @@ const Map = () => {
   );
 
   return (
-    <div>
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <nav>
         <Link to="/">
           <button>Home</button>

@@ -9,7 +9,7 @@ import Register from "./components/Register";
 import PayforBook from "./components/payment/PayforBook";
 import PayforPackage from "./components/payment/PayforPackage";
 import Contact from "./components/ContactUs/Contact";
-
+import "./index.css";
 function App() {
   return (
     <div className="App">

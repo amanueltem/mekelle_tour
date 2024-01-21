@@ -22,7 +22,7 @@ const BuyTourPackage = () => {
     fetchAllPackages();
   }, []); // Empty dependency array means this effect runs once on mount
   return (
-    <div>
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <nav>
         <Link to="/">
           <button>Home</button>

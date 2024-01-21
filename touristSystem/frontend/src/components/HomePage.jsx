@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SideShow from "./SideShow.js";
 const HomePage = () => {
   return (
-    <div>
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <video src={video} muted autoPlay loop type="video/mp4"></video>
 
       <nav>
@@ -27,6 +27,10 @@ const HomePage = () => {
         </Link>
       </nav>
       <SideShow />
+      <div className="h2">
+        <h2>Search your destination and enjoy with us !</h2>
+        <h2>We Can Assist You As Mekelle Tour Agency System!</h2>
+      </div>
     </div>
   );
 };

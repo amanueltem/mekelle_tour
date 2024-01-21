@@ -10,7 +10,7 @@ const Negash = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h1>Debre Damo</h1>
+        <h1>Negash</h1>
         <p>
           Negash is considered to be the earliest Muslim settlement in Africa; a
           cemetery from the 7th century CE has been excavated inside the village
