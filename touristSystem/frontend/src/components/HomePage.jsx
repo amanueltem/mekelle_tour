@@ -10,17 +10,20 @@ const HomePage = () => {
       <video src={video} muted autoPlay loop type="video/mp4"></video>
 
       <nav>
-        <Link to="/book-now">
-          <button>Book Now</button>
-        </Link>
-        <Link to="/buy-tour-package">
-          <button>Buy Tour Package</button>
-        </Link>
         <Link to="/places">
           <button>Places</button>
         </Link>
         <Link to="/map">
           <button>map</button>
+        </Link>
+        <Link to="/buy-tour-package">
+          <button>Buy Tour Package</button>
+        </Link>
+        <Link to="/book-now">
+          <button>Book Now</button>
+        </Link>
+        <Link to="/Contact">
+          <button>Contact us</button>
         </Link>
       </nav>
       <SideShow />

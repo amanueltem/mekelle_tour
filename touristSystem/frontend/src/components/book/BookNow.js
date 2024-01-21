@@ -29,17 +29,6 @@ export default function BookNow() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedPlace || !date || !transportation || !duration || !number) {
-      alert("Please fill in all required fields.");
-    }
-    console.log("Booking submitted:", {
-      selectedPlace,
-      date,
-      transportation,
-      duration,
-      number,
-      page,
-    });
   };
 
   const handlePlaceChange = (event) => {
@@ -66,87 +55,110 @@ export default function BookNow() {
     </div>
   );
   return (
-    <div className=" justify-content-center align-items-center  vh-100">
-      <form className="p-3 bg-white w-25" onSubmit={handleSubmit}>
-        <table>
-          <tr>
-            <td>
-              <h3>Destination</h3>
-            </td>
-            <td>
-              <SelectPlace />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3>Date:</h3>
-            </td>
-            <td>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr columnSpan="3">
-            <td>
-              <h3>Transportation:</h3>
-            </td>
-            <td>
-              <h5>
-                Bus{" "}
-                <input
-                  type="radio"
-                  name="transport"
-                  value="bus"
-                  checked={transportation === "bus"}
-                  onChange={(e) => setTransportation(e.target.value)}
-                />
-                Flight{" "}
-                <input
-                  type="radio"
-                  name="transport"
-                  value="flight"
-                  checked={transportation === "flight"}
-                  onChange={(e) => setTransportation(e.target.value)}
-                />
-              </h5>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3>Duration:</h3>
-            </td>
-            <td>
-              <input
-                type="number"
-                placeholder="Enter number of days"
-                onChange={(e) => setDuration(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3>Number of people:</h3>
-            </td>
-            <td>
-              <input
-                type="number"
-                placeholder="Enter number of peoples"
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </td>
-          </tr>
-        </table>
-        <Link
-          to={`/login?destination=${selectedPlace}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`}
-        >
-          <button type="submit" className="btn btn-success">
-            Book Now
-          </button>
+    <div>
+      <nav>
+        <Link to="/">
+          <button>Home</button>
         </Link>
-      </form>
+        <Link to="/places">
+          <button>Places</button>
+        </Link>
+        <Link to="/map">
+          <button>map</button>
+        </Link>
+        <Link to="/buy-tour-package">
+          <button>Buy Tour Package</button>
+        </Link>
+        <Link to="/book-now">
+          <button>Book Now</button>
+        </Link>
+        <Link to="/Contact">
+          <button>Contact us</button>
+        </Link>
+      </nav>
+
+      <div className=" justify-content-center align-items-center  vh-100">
+        <form className="p-3 bg-white w-25" onSubmit={handleSubmit}>
+          <table>
+            <tr>
+              <td>
+                <h3>Destination</h3>
+              </td>
+              <td>
+                <SelectPlace />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Date:</h3>
+              </td>
+              <td>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr columnSpan="3">
+              <td>
+                <h3>Transportation:</h3>
+              </td>
+              <td>
+                <h5>
+                  Bus{" "}
+                  <input
+                    type="radio"
+                    name="transport"
+                    value="bus"
+                    checked={transportation === "bus"}
+                    onChange={(e) => setTransportation(e.target.value)}
+                  />
+                  Flight{" "}
+                  <input
+                    type="radio"
+                    name="transport"
+                    value="flight"
+                    checked={transportation === "flight"}
+                    onChange={(e) => setTransportation(e.target.value)}
+                  />
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Duration:</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  placeholder="Enter number of days"
+                  onChange={(e) => setDuration(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Number of people:</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  placeholder="Enter number of peoples"
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </td>
+            </tr>
+          </table>
+          <Link
+            to={`/login?destination=${selectedPlace}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`}
+          >
+            <button type="submit" className="btn btn-success">
+              Book Now
+            </button>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 }

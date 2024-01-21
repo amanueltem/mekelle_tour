@@ -4,18 +4,22 @@
   gap: 10px;
   margin-left: 5%;
   margin-right: 5%;
-  flex-direction: row;
   align-items: stretch;
 }
 
 .card {
   flex: 1;
-  height: 100%; /* Set the height to 100% */
-  /* Add other styling for your cards */
+  min-width: calc(33.33% - 10px); /* Set the minimum width for each card */
+  max-width: calc(33.33% - 10px); /* Set the maximum width for each card */
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
 img {
   width: 200px;
   height: 200px;
 }
-
+guide,
+h1 {
+  color: rgb(226, 17, 170);
+}
