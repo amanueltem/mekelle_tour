@@ -4,15 +4,15 @@ import cors from "cors";
 import getPlaces from "./components/places.js";
 import getPackages from "./components/packages.js";
 import getAccounts from "./components/Account.js";
-import createAccount from "./components/CreateAccount.js"
+import createAccount from "./components/CreateAccount.js";
 const app = express();
 const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "ne200ths",
+  password: process.env.DB_PASSWORD || "",
   database: process.env.DB_DATABASE || "mekelle_tour",
 });
-app.locals.db = db;//store db  in locals
+app.locals.db = db; //store db  in locals
 db.connect((err) => {
   if (err) {
     console.error("Error connecting to MySQL:", err);
@@ -28,10 +28,10 @@ app.get("/", (req, res) => {
 });
 app.get("/map", (req, res) => getPlaces(req, res));
 app.get("/tour_package", (req, res) => getPackages(req, res));
-app.post("/login",(req,res)=>getAccounts(req,res));
-app.post("/register",(req,res)=>createAccount(req,res));
-const host = '0.0.0.0';
-app.listen(5000, host,() => {
+app.post("/login", (req, res) => getAccounts(req, res));
+app.post("/register", (req, res) => createAccount(req, res));
+const host = "0.0.0.0";
+app.listen(5000, host, () => {
   console.log("Connected to backend at port 5000 okey!");
 });
 
