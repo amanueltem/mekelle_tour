@@ -78,7 +78,7 @@ totalCost=intialCost+parseInt(duration)/100*intialCost+parseInt(number)/2*intial
       IntialPrice:{intialCost}
       </div>
       <div className="card">
-      duration:{duration} days
+      duration:{duration} Days
       </div>
       <div className="card">
       Family members:{number}
