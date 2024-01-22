@@ -8,7 +8,7 @@ const Alamata = () => {
   };
 
   return (
-    <div className="card">
+    <div className="card-container">
       <div className="card-header">
       <h1>Almata Town</h1>
         <p>

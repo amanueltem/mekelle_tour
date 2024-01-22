@@ -14,7 +14,7 @@ const CreateAccount = (req, res) => {
       console.log(err);
       return res.json(err);
     }
-    else return res.json("book has been created sucessfully");
+    else return res.json("success");
   });
 }
 

@@ -8,11 +8,12 @@
 }
 
 .card {
-  flex: 1;
+   flex: 1;
   min-width: calc(33.33% - 10px); /* Set the minimum width for each card */
   max-width: calc(33.33% - 10px); /* Set the maximum width for each card */
   box-sizing: border-box;
   margin-bottom: 10px;
+  /*font-family: "Roboto", sans-serif;*/
 }
 
 img {

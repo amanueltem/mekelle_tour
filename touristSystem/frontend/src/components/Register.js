@@ -8,7 +8,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [fieldsEmpty, setFieldsEmpty] = useState(false);
-   
+   const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,7 +39,13 @@ const Register = () => {
 
       const response = await axios.post('http://localhost:5000/register', userDetails);
       console.log(response.data);
-
+       if(response.data=="success"){
+       alert("you have signed in sucessfully")
+       navigate('/login')
+       }
+       else{
+       alert("you have not signed in suecessfylly")
+       }
       // Clear the input fields and reset password match status after successful registration
       setEmail('');
       setPassword('');

@@ -6,6 +6,7 @@ import getPackages from "./components/packages.js";
 import getAccounts from "./components/Account.js";
 import createAccount from "./components/CreateAccount.js";
 import getPrice from "./components/Prices.js"
+import getPackage from "./components/Package.js"
 const app = express();
 const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 app.get("/map", (req, res) => getPlaces(req, res));
 app.get("/tour_package", (req, res) => getPackages(req, res));
 app.post("/price",(req,res)=>getPrice(req,res));
+app.post("/package",(req,res)=>getPackage(req,res));
 app.post("/login", (req, res) => getAccounts(req, res));
 app.post("/register", (req, res) => createAccount(req, res));
 const host = "0.0.0.0";

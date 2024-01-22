@@ -17,18 +17,21 @@ const Login = () => {
   const duration = searchParams.get("duration");
   const number = searchParams.get("number");
   const page = searchParams.get("page");
+  const package_id=searchParams.get("package_id")
   /*console.log(destination);
   console.log(date);
   console.log(transportation);
   console.log(duration);
-  console.log(number);
-  console.log(page);*/
+  console.log(number);*/
+  console.log(package_id)
+  console.log(page);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [fieldsEmpty, setFieldsEmpty] = useState(false);
+  const [sucess,setSucess]=useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,13 +49,18 @@ const Login = () => {
       });
       console.log(response.data);
       if(response.data=="sucess"){
+      setSucess(true)
        if (page === "BookNow") {
   // Navigate to '/payforbook' with additional parameters
   navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
 } else {
   // Navigate to '/payforpackage' with additional parameters
-  navigate(`/payforpackage?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+  navigate(`/payforpackage?package_id=${package_id}&email=${email}`);
   }
+}
+else{
+alert("invalid user name or password")
+setPassword('');
 }
     } catch (error) {
     console.log(error);
@@ -102,6 +110,9 @@ const Login = () => {
           <p>
             Don't have an account? <a href="/register">Create Account</a>
           </p>
+        </div>
+        <div>
+        <button className="btn back" onClick={e=>navigate('/')}>Back to Home</button>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Packages = (props) => {
   const [packageImage, setPackageImage] = useState(null);
   const [formattedDate, setFormattedDate] = useState("");
+  const page="Package"
   const dataToPass = {
     // Your data goes here
     package_id: props.package_id,
@@ -36,7 +37,7 @@ const Packages = (props) => {
       <b>Date: {formattedDate}</b>
       <b>Transportation: {props.package_transportation}</b>
       <b>Initial price: {props.package_price}</b>
-      <Link to="/login">
+      <Link to={`/login?package_id=${props.package_id}&page=${page}`}>
         <button className="btn btn-success">Buy Package</button>
       </Link>
     </div>

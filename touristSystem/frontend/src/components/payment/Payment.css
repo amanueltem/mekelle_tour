@@ -1,0 +1,24 @@
+.card-container {
+  display: flex;
+  flex-direction:column;
+  gap: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+   margin-top:2%;
+  /* align-items: center;
+    justify-content: center;
+    text-align: center;*/
+  /*align-items: stretch;*/
+}
+
+.card {
+ /* flex: 1;
+ /* box-sizing: border-box;*/
+  margin-bottom: 10px;
+  display: flex;
+
+}
+.cancel{
+margin-left:10px;
+background-color: rgb(244, 142, 74);
+}
