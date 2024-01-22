@@ -78,30 +78,30 @@ console.log(err);
 }
 return(
 <div>
-    <div className="card-container">
+    <div className="cc-container">
     <form>
-      <div className="card">
+      <div className="cc">
       Email:{email}
       </div>
-       <div className="card">
+       <div className="cc">
       Package name:{package_id}
       </div>
-      <div className="card">
+      <div className="cc">
       Destination:{destination}
       </div>
-      <div className="card">
+      <div className="cc">
       Date:{formattedDate}
       </div>
-      <div className="card">
+      <div className="cc">
       Transportation:{transportation}
       </div>
-      <div className="card">
+      <div className="cc">
       IntialPrice:{intialCost}
       </div>
-      <div className="card">
+      <div className="cc">
       duration:{duration} days
       </div>
-      <div className="card">
+      <div className="cc">
       Family members:
       <input type="text"   value={number}
               onChange={(e) =>

@@ -1,4 +1,4 @@
-.card-container {
+.cc-container {
   display: flex;
   flex-direction:column;
   gap: 10px;
@@ -11,7 +11,7 @@
   /*align-items: stretch;*/
 }
 
-.card {
+.cc{
  /* flex: 1;
  /* box-sizing: border-box;*/
   margin-bottom: 10px;

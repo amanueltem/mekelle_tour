@@ -60,30 +60,30 @@ totalCost=intialCost+parseInt(duration)/100*intialCost+parseInt(number)/2*intial
   
   return (
   <div>
-    <div className="card-container">
+    <div className="cc-container">
     <form onSubmit={handleSubmit}>
-      <div className="card">
+      <div className="cc">
       Email:{email}
       </div>
-      <div className="card">
+      <div className="cc">
       Destination:{destination}
       </div>
-      <div className="card">
+      <div className="cc">
       Date:{formattedDate}
       </div>
-      <div className="card">
+      <div className="cc">
       Transportation:{transportation}
       </div>
-      <div className="card">
+      <div className="cc">
       IntialPrice:{intialCost}
       </div>
-      <div className="card">
+      <div className="cc">
       duration:{duration} Days
       </div>
-      <div className="card">
+      <div className="cc">
       Family members:{number}
       </div>
-      <div className="card">
+      <div className="cc">
       TotalCost:{totalCost}
       </div>
       <div>
