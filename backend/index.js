@@ -14,14 +14,17 @@ import getPrice from "./components/Prices.js"
 import getPackage from "./components/Package.js"
 import insertPrice from "./components/InsertPrice.js"
 import createAccount from "./components/CreateAccount.js";
+import mysqlConfig from './config/config.js'
 
 const app = express();
-const db = mysql.createConnection({
+//const mysqlConfig = require('./config/config');
+const db = mysql.createConnection(mysqlConfig);
+/*const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "ne200ths",
   database: process.env.DB_DATABASE || "mekelle_tour",
-});
+});*/
 app.locals.db = db;//store db  in locals
 db.connect((err) => {
   if (err) {
