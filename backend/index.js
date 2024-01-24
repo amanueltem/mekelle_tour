@@ -7,10 +7,13 @@ import getPlaces from "./components/places.js";
 import getAccounts from "./components/Account.js";
 import getAccountsu from "./components/Accountu.js";
 import addPackage from "./components/AddPackage.js";
+import deletePackage from "./components/DeletePackage.js"
 import addPlace from "./components/AddPlaceData.js"
 import getPackages from "./components/Packages.js"
 import getPrice from "./components/Prices.js"
 import getPackage from "./components/Package.js"
+import insertPrice from "./components/InsertPrice.js"
+import createAccount from "./components/CreateAccount.js";
 
 const app = express();
 const db = mysql.createConnection({
@@ -74,6 +77,10 @@ app.post("/add_place",(req,res)=>addPlace(req,res));
 app.get("/tour_package", (req, res) => getPackages(req, res));
 app.post("/price",(req,res)=>getPrice(req,res));
 app.post("/package",(req,res)=>getPackage(req,res));
+app.post("/delete_package",(req,res)=>deletePackage(req,res));
+app.post("/insert_price",(req,res)=>insertPrice(req,res));
+app.post("/register", (req, res) => createAccount(req, res));
+
 
 app.use(express.static('public'));
 const host = '0.0.0.0';

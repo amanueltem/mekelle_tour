@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 const Map = () => {
   const [places, setPlaces] = useState([]);
-  const [center, setCenter] = useState([12.4148, 39.5582]);
+  const [center, setCenter] = useState([13.6231,39.0018]);
   const [selectedPlace, setSelectedPlace] = useState(0);
   const [selectedType, setSelectedType] = useState(1);
   const [type, setType] = useState([
@@ -38,7 +38,16 @@ const Map = () => {
       document.body.style.overflow = "visible";
     };
   }, []);
-
+   
+   
+   
+  
+      /*setCenter([
+      places[0].latitude,
+      places[0].longitude,
+    ])
+   */
+   
   const handlePlaceChange = (event) => {
     const selectedPlaceIndex = parseInt(event.target.value); // Use event.target.value
     setSelectedPlace(selectedPlaceIndex);

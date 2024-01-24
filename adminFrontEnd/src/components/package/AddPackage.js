@@ -10,7 +10,7 @@ export default function AddPackage() {
   const [date, setDate] = useState('')
   const [transportation, setTransportation] = useState('')
   const [duration, setDuration] = useState(0);
-  const [price,setPrice]=useState(1)
+  const [price,setPrice]=useState('')
   const [name,setName]=useState('');
   const [description,setDescription]=useState('')
   const [image,setImage]=useState('')

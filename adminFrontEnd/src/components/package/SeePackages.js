@@ -3,23 +3,25 @@ import axios from "axios";
 import React from "react";
 import Packages from "./Packages";
 import "./Packages.css";
-import { NavLink } from "react-router-dom";
+import { NavLink,useLocation } from "react-router-dom";
 const BuyTourPackage = () => {
   const [packages, setPackages] = useState([]);
-  useEffect(() => {
-    const fetchAllPackages = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/tour_package");
-        setPackages(res.data);
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+ const location = useLocation();
 
-    // Fetch packages only once when the component mounts
-    fetchAllPackages();
-  }, []); // Empty dependency array means this effect runs once on mount
+useEffect(() => {
+  const fetchAllPackages = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/tour_package");
+      setPackages(res.data);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Fetch packages every time the component mounts or the route changes
+  fetchAllPackages();
+}, [location]); 
   return (
     <div style={{ marginLeft: "5%", marginRight: "5%" }}>
       <div className="package-page">

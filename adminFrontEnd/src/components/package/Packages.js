@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Packages.css";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import axios from 'axios'
 const Packages = (props) => {
   const [formattedDate, setFormattedDate] = useState("");
   const navigate = useNavigate();
@@ -17,8 +17,17 @@ const Packages = (props) => {
     setFormattedDate(formatted);
   }, [props.package_date]);
 
-  const handleClick = (e) => {
-    // Handle click logic
+  const handleClick = async (e) => {
+  const response = await axios.post('http://localhost:8800/delete_package', { package_id: props.package_id });
+  if(response.data=="deleted"){
+  alert("the package has been deleted sucessfully")
+  navigate('/see_packages');
+  }
+  else{
+  console.log(response.data)
+  alert("error while delitnig.");
+  }
+    
   };
 
   return (

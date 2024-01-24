@@ -29,6 +29,9 @@ const Navigation = () => {
         <NavLink  to="/see_packages" activeClassName="active">
         <button>Available Packages</button>
         </NavLink>
+        <NavLink to="/insert_price" activeClassName="active">
+        <button>Insert Price</button>
+        </NavLink>
       </nav>
 
       <Avatar />

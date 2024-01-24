@@ -37,7 +37,7 @@ const Register = () => {
         lastLoginDate: currentDate.slice(0, 19).replace("T", " "),
       };
 
-      const response = await axios.post('http://localhost:5000/register', userDetails);
+      const response = await axios.post('http://localhost:8800/register', userDetails);
       console.log(response.data);
        if(response.data=="success"){
        alert("you have signed in sucessfully")
