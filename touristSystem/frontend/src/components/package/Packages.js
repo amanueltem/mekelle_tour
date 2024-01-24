@@ -1,12 +1,15 @@
 // Import React, useState, useEffect
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Packages.css";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 const Packages = (props) => {
   const [packageImage, setPackageImage] = useState(null);
   const [formattedDate, setFormattedDate] = useState("");
+  const navigate=useNavigate();
   const page="Package"
+  const email=window.localStorage.getItem("email");
   const dataToPass = {
     // Your data goes here
     package_id: props.package_id,
@@ -27,7 +30,15 @@ const Packages = (props) => {
     const formatted = date.toLocaleDateString(undefined, options);
     setFormattedDate(formatted);
   }, [props.package_image, props.package_date]);
-
+//{`/login?package_id=${props.package_id}&page=${page}`}
+const handleClick=(e)=>{
+if(email!==null){
+  navigate(`/payforpackage?package_id=${props.package_id}`);
+}
+else{
+  navigate(`/login?package_id=${props.package_id}&page=${page}`)
+}
+}
   return (
     <div className="card">
       <b>Package Name: {props.package_id}</b>
@@ -37,9 +48,7 @@ const Packages = (props) => {
       <b>Date: {formattedDate}</b>
       <b>Transportation: {props.package_transportation}</b>
       <b>Initial price: {props.package_price}</b>
-      <Link to={`/login?package_id=${props.package_id}&page=${page}`}>
-        <button className="btn btn-success">Buy Package</button>
-      </Link>
+        <button className="btn btn-success" onClick={handleClick}>Buy Package</button>
     </div>
   );
 };

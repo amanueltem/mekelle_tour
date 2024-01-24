@@ -33,6 +33,8 @@ export default function BookNow() {
   }, []); // Empty dependency array means this effect runs once on mount
 
   const handleSubmit = async (e) => {
+  const em=window.localStorage.getItem("email")
+  console.log("%%%%%%%%%%%%%%%%%%%%%:"+em);
     e.preventDefault();
     if ( !date || !transportation || !duration || !number) {
       alert("Please fill in all required fields.");
@@ -47,8 +49,13 @@ export default function BookNow() {
       number,
       page,
     });
+    console.log("\n\n\n...."+em);
+    if(em!=""){
+      navigate(`/payforbook?destination=${places[selectedPlace].name}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}`);
+    }
+    else{
     navigate(`/login?destination=${places[selectedPlace].name}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&page=${page}`);
-  };
+    }  };
 
   const handlePlaceChange = (event) => {
     const selectedPlaceIndex = parseInt(event.target.value); // Use event.target.value
@@ -75,26 +82,6 @@ export default function BookNow() {
   );
   return (
     <div style={{ marginLeft: "5%", marginRight: "5%" }}>
-      <nav>
-        <NavLink exact to="/" activeClassName="active">
-          <button>Home</button>
-        </NavLink>
-        <NavLink to="/places" activeClassName="active">
-          <button>Places</button>
-        </NavLink>
-        <NavLink to="/map" activeClassName="active">
-          <button>Map</button>
-        </NavLink>
-        <NavLink to="/buy-tour-package" activeClassName="active">
-          <button>Buy Tour Package</button>
-        </NavLink>
-        <NavLink to="/book-now" activeClassName="active">
-          <button>Book Now</button>
-        </NavLink>
-        <NavLink to="/contact" activeClassName="active">
-          <button>Contact us</button>
-        </NavLink>
-      </nav>
       <div className=" justify-content-center align-items-center  vh-100">
         <form className="p-3 bg-white w-25" onSubmit={handleSubmit}>
         <div>

@@ -4,11 +4,7 @@ import video from "./ShowPhoto/video.mp4";
 //import video from "../../Assets/video.mp4";
 import { NavLink } from "react-router-dom";
 import SideShow from "./SideShow.js";
-const HomePage = () => {
-  return (
-    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
-      <video src={video} muted autoPlay loop type="video/mp4"></video>
-
+/*
       <nav>
         <NavLink exact to="/" activeClassName="active">
           <button>Home</button>
@@ -28,7 +24,11 @@ const HomePage = () => {
         <NavLink to="/contact" activeClassName="active">
           <button>Contact us</button>
         </NavLink>
-      </nav>
+      </nav>*/
+const HomePage = () => {
+  return (
+    <div style={{ marginLeft: "5%", marginRight: "5%" }}>
+      <video src={video} muted autoPlay loop type="video/mp4"></video>
       <div className="mu">
         <SideShow />
         <div className="text">

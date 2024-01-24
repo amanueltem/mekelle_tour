@@ -9,11 +9,16 @@ import Register from "./components/Register";
 import PayforBook from "./components/payment/PayforBook";
 import PayforPackage from "./components/payment/PayforPackage";
 import Contact from "./components/ContactUs/Contact";
+import { AuthProvider } from './components/profile/AuthContext';
+import Navigation from './components/profile/Navigation';
 import "./index.css";
 function App() {
   return (
     <div className="App">
+    
       <BrowserRouter>
+      <AuthProvider>
+      <Navigation/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/book-now" element={<BookNow />} />
@@ -26,6 +31,7 @@ function App() {
           <Route path="/payforbook" element={<PayforBook />} />
           <Route path="/payforpackage" element={<PayforPackage />} />
         </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

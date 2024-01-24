@@ -3,12 +3,13 @@ import "./SlideShow.css"
 import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import React, { useState } from "react";
 import axios from "axios";
-
+import { useAuth } from './profile/AuthContext';
 const Login = () => {
   /**************Data from the other page"*/
 
   console.log("****************************************/");
   const location = useLocation();
+   const { login } = useAuth();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const destination = searchParams.get("destination");
@@ -49,13 +50,15 @@ const Login = () => {
       });
       console.log(response.data);
       if(response.data=="sucess"){
+        window.localStorage.setItem("email",email);
+        login(email);
       setSucess(true)
        if (page === "BookNow") {
   // Navigate to '/payforbook' with additional parameters
-  navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}&email=${email}`);
+  navigate(`/payforbook?destination=${destination}&date=${date}&transportation=${transportation}&duration=${duration}&number=${number}`);
 } else {
   // Navigate to '/payforpackage' with additional parameters
-  navigate(`/payforpackage?package_id=${package_id}&email=${email}`);
+  navigate(`/payforpackage?package_id=${package_id}`);
   }
 }
 else{

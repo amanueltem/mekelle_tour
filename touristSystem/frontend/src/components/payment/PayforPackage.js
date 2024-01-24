@@ -1,24 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useLocation,useNavigate} from 'react-router-dom'
 import {useState,useEffect} from 'react'
+import { useAuth } from '../profile/AuthContext';
 import axios from "axios"
 const PayforPackage=(e)=>{
  const location = useLocation();
  const navigate=useNavigate();
 const searchParams = new URLSearchParams(location.search);
 const package_id =searchParams.get('package_id')
-const email=searchParams.get('email')
+const {user}=useAuth();
 const [tourPackage,setTourPackage]=useState('');
 const [number,setNumber]=useState();
 const [fieldsEmpty, setFieldsEmpty] = useState(false);
 const [cost,setCost]=useState(0);
 
 console.log(package_id)
-console.log(email)
+console.log(user)
  
   const userDetails = {
     package_id,
-    email,
+    user,
   };
 
 useEffect(() => {
@@ -81,7 +82,7 @@ return(
     <div className="cc-container">
     <form>
       <div className="cc">
-      Email:{email}
+      Email:{user}
       </div>
        <div className="cc">
       Package name:{package_id}

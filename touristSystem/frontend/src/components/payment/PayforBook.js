@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocation,useNavigate,NavLink } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Payment.css"
+import { useAuth } from '../profile/AuthContext';
 const PayforBook = () => {
   const [price, setPrice] = useState('');
 
@@ -11,7 +12,7 @@ const PayforBook = () => {
   const searchParams = new URLSearchParams(location.search);
   const destination = searchParams.get('destination');
   const transportation = searchParams.get('transportation');
-  const email = searchParams.get('email');
+  const {user} = useAuth();
   const number=searchParams.get('number');
   const duration=searchParams.get('duration');
   let date=searchParams.get('date');
@@ -63,7 +64,7 @@ totalCost=intialCost+parseInt(duration)/100*intialCost+parseInt(number)/2*intial
     <div className="cc-container">
     <form onSubmit={handleSubmit}>
       <div className="cc">
-      Email:{email}
+      Email:{user}
       </div>
       <div className="cc">
       Destination:{destination}

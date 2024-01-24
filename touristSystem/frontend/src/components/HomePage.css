@@ -18,11 +18,11 @@ body {
 
 /* Navigation styles */
 nav {
-  background-color: #fff;
+  background-color: #dddddd;
   padding: 5px;
   text-align: center;
-  margin-top: 1rem;
-  margin-left: 0.25rem;
+  margin-top: 0px;
+  margin-left: 5%;
   margin-right: 0.25rem;
   max-width: max-content;
   float: center;
