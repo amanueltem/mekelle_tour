@@ -1,11 +1,18 @@
 // Navigation.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
 import { useAuth } from './AuthContext';
 
 const Navigation = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    // Redirect to the home page
+    navigate('/');
+  };
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', padding: '10px', backgroundColor:'#dddddd'}}>
@@ -36,7 +43,7 @@ const Navigation = () => {
         {user ? (
           <div>
             Welcome, {user.charAt(0).toUpperCase()}
-            <button onClick={logout} style={{ marginLeft: '10px' }}>
+            <button onClick={handleLogout} style={{ marginLeft: '10px' }}>
               Logout
             </button>
           </div>

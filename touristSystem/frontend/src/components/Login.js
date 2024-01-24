@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SlideShow.css"
 import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { useAuth } from './profile/AuthContext';
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
 
   console.log("****************************************/");
   const location = useLocation();
-   const { login } = useAuth();
+   //const { login } = useAuth();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const destination = searchParams.get("destination");
@@ -73,6 +73,19 @@ setPassword('');
       setLoading(false);
     }
   };
+  
+  
+   const { user, login, logout } = useAuth();
+    const handleLogout = () => {
+    logout();
+    // Redirect to the login page or any other desired page
+    navigate('/login');
+  };
+   useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
