@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/mekelle_tour/static/css/main.27adc585.css",
+    "main.js": "/mekelle_tour/static/js/main.daba3317.js",
+    "static/js/787.d5fa4d18.chunk.js": "/mekelle_tour/static/js/787.d5fa4d18.chunk.js",
+    "static/media/video.mp4": "/mekelle_tour/static/media/video.6de6c503158ecb63702b.mp4",
+    "static/media/gheralta_mountains.jpg": "/mekelle_tour/static/media/gheralta_mountains.3b0452f3a405e6b8c39b.jpg",
+    "static/media/url2.jpg": "/mekelle_tour/static/media/url2.3b0452f3a405e6b8c39b.jpg",
+    "static/media/negash.jpg": "/mekelle_tour/static/media/negash.b89d8817f30ebaa38f99.jpg",
+    "static/media/Mary_Zion.jpg": "/mekelle_tour/static/media/Mary_Zion.708efc499ea63f25e97f.jpg",
+    "static/media/axum_obelisk.jpg": "/mekelle_tour/static/media/axum_obelisk.1f736fb527c53e3e1539.jpg",
+    "static/media/url3.jpg": "/mekelle_tour/static/media/url3.1f736fb527c53e3e1539.jpg",
+    "static/media/debre_Damo.jpg": "/mekelle_tour/static/media/debre_Damo.65d85d6967da7eedd0a9.jpg",
+    "static/media/alamata_town.jpg": "/mekelle_tour/static/media/alamata_town.a7324926c30bf044b519.jpg",
+    "static/media/url1.jpg": "/mekelle_tour/static/media/url1.a7324926c30bf044b519.jpg",
+    "index.html": "/mekelle_tour/index.html",
+    "main.27adc585.css.map": "/mekelle_tour/static/css/main.27adc585.css.map",
+    "main.daba3317.js.map": "/mekelle_tour/static/js/main.daba3317.js.map",
+    "787.d5fa4d18.chunk.js.map": "/mekelle_tour/static/js/787.d5fa4d18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27adc585.css",
+    "static/js/main.daba3317.js"
+  ]
+}
